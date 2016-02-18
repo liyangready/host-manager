@@ -1,0 +1,228 @@
+@mixin op-btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 40px;
+    background: #F9F9F9;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    text-align: center;
+    font-size: 12px;
+    color: #00AF4A;
+    font-weight: bold;
+    &:hover {
+        opacity: 1;
+        background: #fff;
+    }
+}
+
+.app {
+    background: #F9F9F9;
+    padding: 10px 0;
+    color: #999;
+}
+.m-title {
+    padding: 10px;
+    height: 25px;
+    .header {
+        height: 20px;
+    }
+    /* 按钮区 */
+    .tools {
+        
+        .current {
+            display: flex;
+        }
+        .add-env ,.remove-env {
+            width: 60px;
+            text-align: center;
+            display: inline-block;
+            height: 20px;
+            background: #41AB89;
+            color: #fff;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .remove-env {
+            background: #B5B744;
+        }
+    }
+}
+
+input:focus {                
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(77, 92, 105, 0.6);
+}
+/* 编辑区 */
+.m-editor {
+    width: 600px;
+    height: 510px;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 10px;
+    .hide {
+        display: none;
+    }
+    .editor-mod {
+        position: absolute;
+        top: 0;
+        padding-left: 7px;
+        width: 580px;
+        height: 450px;
+    }
+    .save-content, .cancle-content {
+        position: absolute;
+        width: 40px;
+        height: 20px;
+        top: 10px;
+        text-align: center;
+        color: #fff;
+        background: #AF6E6E;
+        right: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .save-content {
+        right: 55px;
+        background: #60CA8C;
+    }
+    .env-name {
+        color: #AD7B7B;
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 10px;
+        .tips {
+            font-size: 12px;
+            color: #999;    
+        }
+    }
+    .swich-all, .close-all {
+        @include op-btn;
+        position: absolute;
+        right: 62px;
+        top: 15px;
+    }
+    .unuse {
+        color: #DCDADA;
+    }
+    .close-all {
+        right: 16px;
+        color: #7C9C89;
+    }
+    .filter-host {
+        position: absolute;
+        top: 13px;
+        left: 10px;
+        .filter-input {
+            margin-left: 10px;
+            border-radius: 5px;
+            border: 1px solid #CCC;
+            background: #FFF;
+            padding-left: 3px;
+        }
+        .filter-name {
+            vertical-align: middle;
+        }
+    }
+    .group {
+        margin-bottom: 10px;
+        position: relative;
+        .group-name {
+            padding-left: 10px; 
+            font-size: 14px;
+            color: #7F7A6A;
+        }
+        .line {
+            padding-left: 10px; 
+            border-radius: 5px;
+            position: relative;
+            margin: 2px;
+            border: 1px solid #F9F9F9;
+            .ip, .host, .comment {
+                display: inline-block;
+                height: 20px;
+                line-height: 20px;
+                vertical-align: middle;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .ip {
+                color: #679CA2;
+                width: 150px;                
+            }
+            .host {
+                max-width: 200px;
+                color: #666;
+            }
+            .comment {
+                width: 100px;
+                color: #A09D9D;
+                padding-left: 10px;
+                font-style: italic;
+            }
+            .edit-line {
+                font-size: 14px;
+                line-height: 14px;
+                height: 20px;
+                width: 300px;
+                position: absolute;
+                border-radius: 3px;
+                border: 1px solid #B5A4A4;
+                padding: 0px 5px;
+                left: 10px;
+                top: 0;
+                outline: 0;
+            }
+            .operate {
+                @include op-btn;
+                position: absolute;
+                right: 50px;
+            }
+            
+            &:hover {
+                background: #E0E8E8;
+            }
+        }
+        .in-search {
+            background: #FFF7A5;
+            border: 1px solid #D8DE84;
+            &:hover {
+                background: #FFF7A5;
+            }
+        }
+        .unuse {
+            .ip, .host, .comment{
+                text-decoration: line-through;
+                color: #C7C5C5;
+            }
+            .operate {
+                color: #DCDADA;
+            }
+        }
+        .group-ops {
+            position: absolute;
+            right: 0;
+            top: 0;
+            .op {
+                @include op-btn;
+                margin-right: 5px;
+            }
+            .close-op {
+                color: #7C9C89;
+            }
+            .unuse {
+                color: #DCDADA;
+            }
+        }
+
+    }
+    .empty-group {
+        margin-bottom: 0;
+        .group-name {
+            font-size: 12px;
+            color: #A09D9D;
+        }
+    }
+}
