@@ -42,6 +42,8 @@ var App = React.createClass({
 });
 
 function mapStateToProps(state) {
+	
+	state = checkState(state);
 	var rtState = saveStore(state);
 	rtState && (state = rtState); //存储出错
 	var envs = state.get('envs');
@@ -61,5 +63,19 @@ function mapStateToProps(state) {
   	}
 }
 
+function checkState(state) {
+	//fix 把default删除了的情况
+	var isErrorCurrent = false;
+	var currentEnvName = state.get("currentEnvName");
+	var fixName = "";
+	var envs = state.get('envs');
+	var index = envs.findIndex(value => value.get('name') === currentEnvName);
+	if (index < 0) {
+		var firstName = envs.first().get('name');
+		return state.set("currentEnvName", firstName);
+	} 
+	return state;
+	
+}
 
 export default connect(mapStateToProps)(App);

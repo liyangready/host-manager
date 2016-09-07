@@ -14,6 +14,7 @@ if (gui) {
 export function saveStore(state) {
 	try {
 		var stateJs = state.toJSON();
+		
 		if (isNodeWebKit) {
 			// node-webkit
 	    	fs.writeFileSync(hostPath, JSON.stringify(stateJs));

@@ -170,26 +170,5 @@ var Editor = React.createClass({
 		this.props.doCloseAllInEnv();
 	}
 });
-function getCurrentRange(editor) {
-        var selection, range, txt = $(editor);
-        selection = document.getSelection();
-        range = selection.getRangeAt(0);
-        // _parentElem = range.commonAncestorContainer;
-        
-        return range;
-    }
-/*
-* 获取纯文本
-*/
-function getPlanText(eitor) {
-	var selection = window.getSelection();
-    var range = document.createRange();
-    range.selectNodeContents(eitor);
-    selection.removeAllRanges();
-    selection.addRange(range);
-    var result = selection.toString();
-    selection.removeAllRanges();
-    return result;
-}
 
 export default Editor;

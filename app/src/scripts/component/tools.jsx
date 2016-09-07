@@ -47,6 +47,8 @@ var AddEnv = React.createClass({
 */
 var DelteEnv = React.createClass({
 	del: function(e) {
+		var sure = window.confirm("确认删除此环境?");
+		if (!sure) {return;}
 		var name = this.props.currentEnv.name;
 		var envNames = this.props.envNames;
 		(envNames.length > 1) && this.props.doDelEnv(name);

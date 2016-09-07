@@ -102,6 +102,7 @@ function delEnv(state, name) {
 		return list.remove(index);
 	});
 	return nstate.set('currentEnvName', 'default');
+	
 }
 
 function switchEditLine(state, itemKey) {
